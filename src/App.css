@@ -40,11 +40,18 @@
 .password-field {
   font-size: 30px;
   font-weight: bold;
-  color: #54535a;
+  color: white;
   background: transparent;
   border: none;
   outline: none;
   max-width: 60%;
+}
+
+.popup-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .copy-button {
@@ -166,6 +173,26 @@ input[type="checkbox"]:checked:after {
   font-weight: bold;
 }
 
+.password-strength {
+  font-weight: bold;
+}
+
+.weak {
+  color: red;
+}
+
+.medium {
+  color: yellow;
+}
+
+.strong {
+  color: orange;
+}
+
+.too-strong {
+  color: #a3ffae;
+}
+
 .generate-button {
   width: 100%;
   height: 10vh;
@@ -175,4 +202,12 @@ input[type="checkbox"]:checked:after {
   border-radius: 10px;
   font-size: 18px;
   font-weight: bold;
+  border: none;
+  transition: color 0.5s ease;
+}
+
+.generate-button:hover {
+  background-color: #191820;
+  color: #a3ffae;
+  border: 1px solid #a3ffae;
 }
