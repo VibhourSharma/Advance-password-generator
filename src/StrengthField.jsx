@@ -1,6 +1,6 @@
 import React from "react";
 
-const StrengthField = () => {
+const StrengthField = ({ generatedPassword }) => {
   return <div className="strength-field">strength</div>;
 };
 

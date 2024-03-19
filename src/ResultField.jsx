@@ -1,11 +1,15 @@
 import React from "react";
+import { usePassword } from "./context/Password";
 
 const ResultField = () => {
+  const { generatedPassword } = usePassword();
   return (
     <div className="result-field-main">
-      <input placeholder="P4$W0rD!" className="password-field"></input>
+      <div placeholder="P4$W0rD!" className="password-field" readOnly>
+        {generatedPassword}
+      </div>
       <div>
-        {/* <span>COPIED!</span> */}
+        <span>COPIED!</span>
         <button className="copy-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"

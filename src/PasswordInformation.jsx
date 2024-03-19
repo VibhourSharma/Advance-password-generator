@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import CheckBoxValue from "./CheckBoxValue";
+import { usePassword } from "./context/Password";
 
 const PasswordInformation = () => {
-  const [range, setRange] = useState(1);
+  const { range, setRange } = usePassword();
+
   return (
     <div className="pass-info-main">
       <div className="pass-range">
