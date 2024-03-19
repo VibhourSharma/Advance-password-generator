@@ -21,7 +21,9 @@ const ResultField = () => {
         )}
       </div>
       <div className="popup-container">
-        <span style={{ color: "#a3ffae" }}>{copied ? "Copied!" : ""}</span>
+        <span style={{ color: "#a3ffae" }}>
+          {generatedPassword && copied ? "Copied!" : ""}
+        </span>
         <button className="copy-button" onClick={handleCopy}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -24,7 +24,7 @@ const StrengthField = () => {
     <div className="strength-field">
       <span>Strength</span>
       <span className={`password-strength ${strengthClass}`}>
-        {passwordStrength()}
+        {strengthClass}
       </span>
     </div>
   );
