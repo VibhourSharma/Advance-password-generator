@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 
-const PasswordContext = createContext();
+const PasswordContext = createContext(null);
 export const usePassword = () => useContext(PasswordContext);
 
 export const PasswordProvider = ({ children }) => {
@@ -10,6 +10,7 @@ export const PasswordProvider = ({ children }) => {
   const [numbers, setNumbers] = useState(false);
   const [symbols, setSymbols] = useState(false);
   const [generatedPassword, setGeneratedPassword] = useState("");
+  const [error, setError] = useState("");
 
   const generatePassword = () => {
     const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -20,14 +21,13 @@ export const PasswordProvider = ({ children }) => {
     let chars = "";
 
     if (upperCase) chars += uppercaseChars;
-    if (lowerCase) chars += lowercaseChars;
     if (numbers) chars += numberChars;
+    if (lowerCase) chars += lowercaseChars;
     if (symbols) chars += symbolChars;
 
     let password = "";
-    const length = range;
 
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < range; i++) {
       const randomIndex = Math.floor(Math.random() * chars.length);
       password += chars[randomIndex];
     }
@@ -36,9 +36,16 @@ export const PasswordProvider = ({ children }) => {
   };
 
   const handleGeneratePassword = () => {
-    if (upperCase || lowerCase || numbers || symbols) {
+    if (!upperCase && !lowerCase && !numbers && !symbols) {
+      setError("Select at least one Checkbox");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      setGeneratedPassword("");
+    } else {
       const password = generatePassword();
       setGeneratedPassword(password);
+      setError("");
     }
   };
 
@@ -57,6 +64,7 @@ export const PasswordProvider = ({ children }) => {
         setSymbols,
         handleGeneratePassword,
         generatedPassword,
+        error,
       }}
     >
       {children}

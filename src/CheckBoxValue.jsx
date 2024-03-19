@@ -14,6 +14,7 @@ const CheckBoxValue = () => {
     setSymbols,
     handleGeneratePassword,
     generatedPassword,
+    error,
   } = usePassword();
 
   return (
@@ -55,6 +56,7 @@ const CheckBoxValue = () => {
         Include Symbols
       </label>
       <StrengthField generatedPassword={generatedPassword} />
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <button className="generate-button" onClick={handleGeneratePassword}>
         Generate
       </button>
